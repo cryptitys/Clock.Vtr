@@ -1,31 +1,33 @@
-const horas = document.getElementById('horas');
-const minutos = document.getElementById('minutos');
-const segundos = document.getElementById('segundos');
-const dataAtual = document.getElementById('data-atual');
-
-function atualizarRelogio() {
-  const agora = new Date();
-  let hr = agora.getHours();
-  let min = agora.getMinutes();
-  let s = agora.getSeconds();
-
-  if (hr < 10) hr = '0' + hr;
-  if (min < 10) min = '0' + min;
-  if (s < 10) s = '0' + s;
-
-  horas.textContent = hr;
-  minutos.textContent = min;
-  segundos.textContent = s;
-
-  // Data formatada
-  const diasSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
-  const diaSemana = diasSemana[agora.getDay()];
-  const dia = agora.getDate().toString().padStart(2, '0');
-  const mes = (agora.getMonth() + 1).toString().padStart(2, '0');
-  const ano = agora.getFullYear();
-
-  dataAtual.textContent = `${diaSemana}, ${dia}/${mes}/${ano}`;
+function updateClock() {
+    const now = new Date();
+    
+    // Formatação do tempo
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const seconds = now.getSeconds().toString().padStart(2, '0');
+    
+    // Formatação da data
+    const weekdays = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+    const weekday = weekdays[now.getDay()];
+    const day = now.getDate();
+    const month = now.toLocaleString('pt-BR', { month: 'long' });
+    const year = now.getFullYear();
+    
+    // Atualiza os elementos HTML
+    document.getElementById('time').innerHTML = `
+        <span class="hours">${hours}</span>
+        <span class="separator">:</span>
+        <span class="minutes">${minutes}</span>
+        <span class="separator">:</span>
+        <span class="seconds">${seconds}</span>
+    `;
+    
+    document.getElementById('date').textContent = `${day} de ${month} de ${year}`;
+    document.getElementById('weekday').textContent = weekday;
+    
+    // Atualiza a cada segundo
+    setTimeout(updateClock, 1000);
 }
 
-setInterval(atualizarRelogio, 1000);
-atualizarRelogio();
+// Inicia o relógio
+updateClock();
