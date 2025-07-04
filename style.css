@@ -5,60 +5,74 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #1a1a2e, #16213e);
-    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: white;
+    background: #0f0f1a;
+    font-family: 'Orbitron', sans-serif;
+    color: #00fffc;
+    overflow: hidden;
 }
 
 .clock-container {
     text-align: center;
-    padding: 30px;
-    border-radius: 15px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
+    padding: 30px 50px;
+    border-radius: 10px;
+    background: rgba(15, 15, 26, 0.8);
+    box-shadow: 0 0 20px rgba(0, 255, 252, 0.2);
+    border: 1px solid rgba(0, 255, 252, 0.1);
+    position: relative;
+    z-index: 1;
 }
 
-.clock-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+.url-display {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+.weekday {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 .time {
-    font-size: 5rem;
-    font-weight: 300;
-    margin-bottom: 10px;
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    font-size: 4.5rem;
+    font-weight: 700;
+    margin: 10px 0;
+    text-shadow: 0 0 10px rgba(0, 255, 252, 0.7);
 }
 
 .time span {
-    padding: 5px 10px;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.1);
+    padding: 0 5px;
 }
 
 .separator {
     animation: blink 1s infinite;
+    position: relative;
+    bottom: 2px;
 }
 
 @keyframes blink {
     0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+    50% { opacity: 0.3; }
 }
 
 .date {
-    font-size: 1.5rem;
-    opacity: 0.8;
-    margin-bottom: 15px;
+    font-size: 1.3rem;
+    margin-top: 10px;
+    letter-spacing: 1px;
 }
 
-.weekday {
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #00ffff;
+/* Efeitos de partículas */
+.particle {
+    position: absolute;
+    background: rgba(0, 255, 252, 0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
 }
 
 @media (max-width: 600px) {
@@ -68,4 +82,7 @@ body {
     .date {
         font-size: 1rem;
     }
-  }
+    .weekday {
+        font-size: 1.2rem;
+    }
+              }
